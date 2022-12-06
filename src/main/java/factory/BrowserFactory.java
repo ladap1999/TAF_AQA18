@@ -41,9 +41,9 @@ public class BrowserFactory {
     }
 
     public WebDriver getDriver() {
-       // driver.manage().window().maximize();
-       // driver.manage().deleteAllCookies();
-
+        //driver.manage().deleteAllCookies();
+        //driver.manage().window().maximize();
+        //driver.manage().t
         return driver;
     }
 }
