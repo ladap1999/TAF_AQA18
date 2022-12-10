@@ -42,8 +42,6 @@ public class BrowserFactory {
 
     public WebDriver getDriver() {
         driver.manage().deleteAllCookies();
-        //driver.manage().window().maximize();
-        //driver.manage().t
         return driver;
     }
 }
