@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 
-public class LoginTest extends BaseTest {
+public class E2ETest extends BaseTest {
 
     //@Test
     public void loginTest() {
@@ -28,16 +28,16 @@ public class LoginTest extends BaseTest {
         );
     }
 
-    //@Test
-    public void loginIncorrectTest() {
-        Assert.assertEquals(
-                userStep.loginIncorrect(ReadProperties.username(), "sdfsdfsdf")
-                        .getErrorTextElement().getText(),
-                "Email/Login or Password is incorrect. Please try again."
-        );
-    }
+//    //@Test
+//    public void loginIncorrectTest() {
+//        Assert.assertEquals(
+//                userStep.loginIncorrect(ReadProperties.username(), "sdfsdfsdf")
+//                        .getErrorTextElement().getText(),
+//                "Email/Login or Password is incorrect. Please try again."
+//        );
+//    }
 
-    @Test
+  /*  @Test
     public void addProjectTest() {
         userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         projectSteps.addProject("WP_01");
@@ -45,4 +45,6 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(driver.findElement(By.className("page_title")).getText(),
                 "WP_01");
     }
+}
+*/
 }
