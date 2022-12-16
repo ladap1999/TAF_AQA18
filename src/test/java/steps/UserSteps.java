@@ -2,14 +2,13 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
-import pages.DashboardPage;
 import pages.LoginPage;
-import pages.ProductPage;
+import pages.products.ListOfProductsPage;
 
-public class UserStep extends BaseStep {
+public class UserSteps extends BaseStep {
     private LoginPage loginPage;
 
-    public UserStep(WebDriver driver) {
+    public UserSteps(WebDriver driver) {
         super(driver);
 
         loginPage = new LoginPage(driver);
@@ -21,15 +20,9 @@ public class UserStep extends BaseStep {
         loginPage.getLogInButton().click();
     }
 
-    public ProductPage loginSuccessful(String email, String psw) {
+    public ListOfProductsPage loginSuccessful(String email, String psw) {
         login(email, psw);
 
-        return new ProductPage(driver);
-    }
-
-    public LoginPage loginIncorrect(String email, String psw) {
-        login(email, psw);
-
-        return loginPage;
+        return new ListOfProductsPage(driver);
     }
 }

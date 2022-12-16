@@ -20,7 +20,6 @@ public class LoginPage extends BasePage {
     protected By getPageIdentifier() {
         return logInButtonLocator;
     }
-
     // Блок атомарных методов
     public WebElement getEmailInput() { return driver.findElement(userNameInputLocator);}
     public WebElement getPassword() { return driver.findElement(passwordInputLocator);}
