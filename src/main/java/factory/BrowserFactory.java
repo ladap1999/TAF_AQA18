@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
+import java.util.HashMap;
 
 public class BrowserFactory {
     private WebDriver driver = null;
@@ -22,10 +23,16 @@ public class BrowserFactory {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setHeadless(ReadProperties.isHeadless());
                 chromeOptions.addArguments("--disable-gpu");
-                //chromeOptions.addArguments("--window-size=1920,1200");
                 chromeOptions.addArguments("--ignore-certificate-errors");
                 chromeOptions.addArguments("--silent");
                 chromeOptions.addArguments("--start-maximized");
+
+                String downloadFilepath = ReadProperties.pathForDownload();
+
+                HashMap<String, Object> chromePrefs = new HashMap<>();
+                chromePrefs.put("profile.default_content_settings.popups", 0);
+                chromePrefs.put("download.default_directory", downloadFilepath);
+                chromeOptions.setExperimentalOption("prefs", chromePrefs);
 
                 driver = new ChromeDriver(chromeOptions);
 
@@ -43,8 +50,6 @@ public class BrowserFactory {
     }
 
     public WebDriver getDriver() {
-        //driver.manage().deleteAllCookies();
-        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         return driver;
     }
