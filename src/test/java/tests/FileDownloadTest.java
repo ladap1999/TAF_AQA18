@@ -17,6 +17,6 @@ public class FileDownloadTest extends BaseTest {
         link.click();
 
         String nameFile = link.getText();
-        Assert.assertTrue(waitsService.waitForExistsFile(ReadProperties.pathForDownload() + "\\" + nameFile));
+        Assert.assertTrue(waitsService.waitForExistsFile(System.getProperty("user.dir")+"\\" + nameFile));
     }
 }

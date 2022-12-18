@@ -27,7 +27,8 @@ public class BrowserFactory {
                 chromeOptions.addArguments("--silent");
                 chromeOptions.addArguments("--start-maximized");
 
-                String downloadFilepath = ReadProperties.pathForDownload();
+                String downloadFilepath = System.getProperty("user.dir");
+
 
                 HashMap<String, Object> chromePrefs = new HashMap<>();
                 chromePrefs.put("profile.default_content_settings.popups", 0);

@@ -40,7 +40,7 @@ public class ReadProperties {
     }
 
     public static String pathForDownload() {
-        return properties.getProperty("pathForDownload");
+       return properties.getProperty("pathForDownload");
     }
 }
 
