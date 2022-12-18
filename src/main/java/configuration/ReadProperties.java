@@ -38,9 +38,5 @@ public class ReadProperties {
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
-
-    public static String pathForDownload() {
-       return properties.getProperty("pathForDownload");
-    }
 }
 
