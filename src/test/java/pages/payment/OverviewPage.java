@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 
 public class OverviewPage extends BasePage {
     private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Overview']");
-
     private final By finishButtonLocator = By.id("finish");
 
     public OverviewPage(WebDriver driver) {

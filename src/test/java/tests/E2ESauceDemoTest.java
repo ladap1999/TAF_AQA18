@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 
 public class E2ESauceDemoTest extends BaseTest {
 
-
     @Test
     public void e2eSuccessfulTest() throws InterruptedException {
         Assert.assertTrue(userStep.loginSuccessful(ReadProperties.username(),

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 
 public class InformationPage extends BasePage {
     private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Your Information']");
-
     private final By userFirstNameInputLocator = By.id("first-name");
     private final By userSecondNameInputLocator = By.id("last-name");
     private final By zipCodeInputLocator = By.id("postal-code");

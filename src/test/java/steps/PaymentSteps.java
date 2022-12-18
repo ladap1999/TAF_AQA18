@@ -28,6 +28,7 @@ public class PaymentSteps extends BaseStep {
         checkoutPage.getContinueButton().click();
         return new OverviewPage(driver);
     }
+
     public ListOfProductsPage completePayment(){
         overviewPage.searchFinishButton().click();
         completePage.searchBackHomeButton().click();
