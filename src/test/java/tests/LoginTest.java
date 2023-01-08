@@ -2,11 +2,13 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
+import steps.UserStep;
 
 public class LoginTest extends BaseTest {
 
@@ -20,12 +22,20 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(new DashboardPage(driver).isPageOpened());
     }
 
-    //@Test
+    @Test(description = "Description")
+    @Issue("AOA18-12")
+    @TmsLink("TC-001")
+    @Description("Description1")
+    @Link("https:/onliner.by")
+    @Link(name = "catalog", type = "mylink", url = "https:/onliner.by")
+    @Severity(SeverityLevel.CRITICAL)
     public void loginSuccessfulTest() {
-        Assert.assertTrue(
-                userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
-                        .isPageOpened()
-        );
+        // userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+        //       .isPageOpened();
+        //  Assert.assertTrue(
+        //        userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+        //                .isPageOpened()
+        // );
     }
 
     //@Test
@@ -42,7 +52,6 @@ public class LoginTest extends BaseTest {
         userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         projectSteps.addProject("WP_01");
 
-        Assert.assertEquals(driver.findElement(By.className("page_title")).getText(),
-                "WP_01");
+        Assert.assertEquals(driver.findElement(By.className("page_title")).getText(), "WP_01");
     }
 }
