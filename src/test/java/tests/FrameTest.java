@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class FrameTest extends BaseTest {
     @Test
-    public void frameTest() {
+    public void frameTest() throws InterruptedException {
         driver.get("https://the-internet.herokuapp.com/iframe");
 
         driver.findElement(By.tagName("h3")).isDisplayed();
@@ -17,7 +17,7 @@ public class FrameTest extends BaseTest {
         //driver.switchTo().frame(0);
         driver.switchTo().frame("mce_0_ifr");
 
-        driver.findElement(By.xpath("//p[. = 'Your content goes here.']")).isDisplayed();
+        waitsService.waitsForVisibilityBy(By.xpath("//p[. = 'Your content goes here.']"));
 
         //driver.switchTo().parentFrame(); // Переключиться в родительский документ
         driver.switchTo().defaultContent(); // Переключает в первоначальный документ
