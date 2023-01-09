@@ -1,7 +1,7 @@
 package com.calculator;
 
 public class Calculator {
-    public double div(int firstNumber, int secondNumber){
+    public int div(int firstNumber, int secondNumber){
         return firstNumber/secondNumber;
     }
 
