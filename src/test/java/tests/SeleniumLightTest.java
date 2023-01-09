@@ -34,6 +34,7 @@ public class SeleniumLightTest {
         driver.findElement(By.id("el_f_losses")).sendKeys("185");
 
         WebElement calcButton = driver.findElement(By.name("button"));
+        Thread.sleep(3000);
         calcButton.click();
 
         Thread.sleep(2000);
