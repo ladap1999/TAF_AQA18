@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CartPage extends BasePage{
-    private final By headerTitleLabelLocator = By.className("title");
     private final static String pagePath = "/cart.html";
+    private final By headerTitleLabelLocator = By.className("title");
     private final By checkoutButtonLocator = By.id("checkout");
 
     public CartPage(WebDriver driver) {
