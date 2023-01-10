@@ -30,12 +30,12 @@ public class LoginTest extends BaseTest {
     @Link(name = "catalog", type = "mylink", url = "https:/onliner.by")
     @Severity(SeverityLevel.CRITICAL)
     public void loginSuccessfulTest() {
-        // userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
-        //       .isPageOpened();
-        //  Assert.assertTrue(
-        //        userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
-        //                .isPageOpened()
-        // );
+        userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+                .isPageOpened();
+        Assert.assertTrue(
+                userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+                        .isPageOpened()
+        );
     }
 
     //@Test
