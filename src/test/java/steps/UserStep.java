@@ -21,7 +21,7 @@ public class UserStep extends BaseStep {
         loginPage.getLogInButton().click();
     }
 
-    //@Step
+    @Step
     public DashboardPage loginSuccessful(String email, String psw) {
         login(email, psw);
 
@@ -33,7 +33,4 @@ public class UserStep extends BaseStep {
 
         return loginPage;
     }
-
-
-
 }

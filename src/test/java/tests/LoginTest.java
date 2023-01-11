@@ -22,28 +22,26 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(new DashboardPage(driver).isPageOpened());
     }
 
-    @Test(description = "Description")
-    @Issue("AOA18-12")
+    @Test (description = "Description")
+    @Issue("AQA18-12")
     @TmsLink("TC-001")
     @Description("Description1")
-    @Link("https:/onliner.by")
-    @Link(name = "catalog", type = "mylink", url = "https:/onliner.by")
-    @Severity(SeverityLevel.CRITICAL)
+    @Link("https://onliner.by")
+    @Link(name = "catalog", type = "mylink", url = "https://onliner.by")
+    @Severity(SeverityLevel.BLOCKER)
     public void loginSuccessfulTest() {
-        // userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
-        //       .isPageOpened();
-        //  Assert.assertTrue(
-        //        userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
-        //                .isPageOpened()
-        // );
+        Assert.assertTrue(
+                userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+                        .isPageOpened()
+        );
     }
 
-    //@Test
+    @Test
     public void loginIncorrectTest() {
         Assert.assertEquals(
                 userStep.loginIncorrect(ReadProperties.username(), "sdfsdfsdf")
                         .getErrorTextElement().getText(),
-                "Email/Login or Password is incorrect. Please try again."
+                "Email/Login or Password is incorrect. Please try again.1"
         );
     }
 
@@ -52,6 +50,7 @@ public class LoginTest extends BaseTest {
         userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         projectSteps.addProject("WP_01");
 
-        Assert.assertEquals(driver.findElement(By.className("page_title")).getText(), "WP_01");
+        Assert.assertEquals(driver.findElement(By.className("page_title")).getText(),
+                "WP_01");
     }
 }
