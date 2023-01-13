@@ -64,4 +64,9 @@ public class LoginTest extends BaseTest {
         page.getType().selectByValue("3");
         page.getType().selectByText("Use a single repository for all cases (recommended)");
     }
+
+    @Test
+    public void checkboxTest(){
+        userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
+    }
 }

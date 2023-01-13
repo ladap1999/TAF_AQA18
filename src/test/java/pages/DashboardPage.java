@@ -9,6 +9,8 @@ public class DashboardPage extends BasePage {
 
     private final By headerTitleLabelLocator = By.xpath("//div[contains(text(), 'All Projects')]");
 
+    private final By testCaseLocator = By.linkText("index.php?/suites/view/2");
+
     public DashboardPage(WebDriver driver) {
         super(driver);
     }
