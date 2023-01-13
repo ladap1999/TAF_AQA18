@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
 import elements.UIElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,8 +25,8 @@ public class LoginPage extends BasePage {
     }
 
     // Блок атомарных методов
-    public UIElement getEmailInput() { return new UIElement(driver,emailInputLocator);}
-    public UIElement getPassword() { return new UIElement(driver,passwordInputLocator);}
-    public UIElement getLogInButton() { return new UIElement(driver,logInButtonLocator);}
-    public UIElement getErrorTextElement() { return new UIElement(driver,errorTextLocator); }
+    public UIElement getEmailInput() { return new UIElement(driver, emailInputLocator);}
+    public UIElement getPassword() { return new UIElement(driver, passwordInputLocator);}
+    public Button getLogInButton() { return new Button(driver, logInButtonLocator);}
+    public UIElement getErrorTextElement() { return new UIElement(driver, errorTextLocator); }
 }

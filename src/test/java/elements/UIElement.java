@@ -81,12 +81,12 @@ public class UIElement implements WebElement {
         return webElement.findElements(by);
     }
 
-
     public List<UIElement> findUIElements(By by) {
         ArrayList<UIElement> list = new ArrayList<>();
-        for (WebElement element:webElement.findElements(by)) {
-            list.add(new UIElement(driver,element));
+        for (WebElement element : webElement.findElements(by)) {
+            list.add(new UIElement(driver, element));
         }
+
         return list;
     }
 
@@ -95,9 +95,8 @@ public class UIElement implements WebElement {
         return webElement.findElement(by);
     }
 
-
     public UIElement findUIElement(By by) {
-        return new UIElement(driver,webElement.findElement(by));
+        return new UIElement(driver, webElement.findElement(by));
     }
 
     @Override
