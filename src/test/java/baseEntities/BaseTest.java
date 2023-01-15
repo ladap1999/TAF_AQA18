@@ -9,15 +9,17 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import services.WaitsService;
-import steps.ProjectSteps;
-import steps.UserStep;
+import steps.*;
 
 public class BaseTest {
     protected WebDriver driver;
     protected UserStep userStep;
-    protected ProjectSteps projectSteps;
+    protected ToDoSteps toDoSteps;
+    protected TestCaseSteps testCaseSteps;
+    protected NavigationSteps navigationSteps;
 
     protected WaitsService waitsService;
+
 
     @BeforeMethod
     public void setUp(ITestContext iTestContext) {
@@ -27,7 +29,9 @@ public class BaseTest {
         iTestContext.setAttribute("driver", driver);
 
         userStep = new UserStep(driver);
-        projectSteps = new ProjectSteps(driver);
+        navigationSteps = new NavigationSteps(driver);
+        toDoSteps = new ToDoSteps(driver);
+        testCaseSteps = new TestCaseSteps(driver);
     }
 
     @AfterMethod

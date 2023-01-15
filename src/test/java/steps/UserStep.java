@@ -27,10 +27,4 @@ public class UserStep extends BaseStep {
 
         return new DashboardPage(driver);
     }
-
-    public LoginPage loginIncorrect(String email, String psw) {
-        login(email, psw);
-
-        return loginPage;
-    }
 }

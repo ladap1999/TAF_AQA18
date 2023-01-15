@@ -36,6 +36,14 @@ public class UIElement implements WebElement {
         }
     }
 
+    public void setFlag(){
+        webElement.click();
+    }
+
+    public void removeFlag(){
+       webElement.click();
+    }
+
     @Override
     public void submit() {
         webElement.submit();
@@ -86,7 +94,6 @@ public class UIElement implements WebElement {
         for (WebElement element : webElement.findElements(by)) {
             list.add(new UIElement(driver, element));
         }
-
         return list;
     }
 

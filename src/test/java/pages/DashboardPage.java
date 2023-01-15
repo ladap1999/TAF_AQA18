@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.UIElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,8 +9,6 @@ public class DashboardPage extends BasePage {
     private final static String pagePath = "index.php?/dashboard";
 
     private final By headerTitleLabelLocator = By.xpath("//div[contains(text(), 'All Projects')]");
-
-    private final By testCaseLocator = By.linkText("index.php?/suites/view/2");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
