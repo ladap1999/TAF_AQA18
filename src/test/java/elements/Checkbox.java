@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Checkbox {
+    private UIElement uiElement;
     private List<UIElement> uiElementList;
     private List<String> textList;
 
@@ -21,16 +22,35 @@ public class Checkbox {
             textList.add(element.findUIElement(By.xpath("parent::*/span")).getText().trim());
         }
     }
+    public boolean isSelected(String text) {
+        UIElement selectedUIElement = uiElementList.get(textList.indexOf(text));
+        return selectedUIElement.isSelected();
+    }
+    public UIElement clickByText(String text,boolean flag) {
+        UIElement selectedUIElement = uiElementList.get(textList.indexOf(text));
+        if(flag != selectedUIElement.isSelected()){
+        selectedUIElement.click();
+        return selectedUIElement;
+    }
+
+    private void click(boolean flag) {
+        if (flag != uiElement.isSelected()) {
+            uiElement.click();
+        }
+    }
+
+    public void setFlag() {
+        click(true);
+    }
+
+    public void removeFlag() {
+        click(false);
+    }
 
     public UIElement selectByIndex(int index) {
         UIElement selectedUIElement = uiElementList.get(index);
         selectedUIElement.click();
         return selectedUIElement;
     }
-
-    public UIElement selectByText(String text) {
-        UIElement selectedUIElement = uiElementList.get(textList.indexOf(text));
-        selectedUIElement.click();
-        return selectedUIElement;
-    }
 }
+

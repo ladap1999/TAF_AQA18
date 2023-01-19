@@ -2,7 +2,6 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
-import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.project.AddProjectPage;
@@ -27,7 +26,7 @@ public class WrappersTest extends BaseTest {
         TodoPage todoPage = navigationSteps.navigateToTodoPage();
         toDoSteps.followToFilter();
         todoPage.getType().selectByIndex(1);
-        Assert.assertTrue(todoPage.getType().selectByText("Failed").isSelected());
+        Assert.assertTrue(todoPage.getType().clickByText("Failed").isSelected());
     }
 
     @Test
