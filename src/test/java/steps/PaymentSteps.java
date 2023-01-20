@@ -1,6 +1,7 @@
 package steps;
 
 import baseEntities.BaseStep;
+import models.PaymentData;
 import org.openqa.selenium.WebDriver;
 import pages.payment.CompletePage;
 import pages.payment.InformationPage;
@@ -21,17 +22,17 @@ public class PaymentSteps extends BaseStep {
         completePage = new CompletePage(driver);
     }
 
-    public OverviewPage fillInformationFields(){
-        checkoutPage.getFirstNameInput().sendKeys("Alex");
-        checkoutPage.getSecondNameInput().sendKeys("Popov");
-        checkoutPage.getZipCodeInput().sendKeys("220106");
-        checkoutPage.getContinueButton().click();
-        return new OverviewPage(driver);
+    public PaymentSteps fillInformationFields(PaymentData paymentData){
+        checkoutPage.userFirstNameInput.sendKeys(paymentData.getFirstName());
+        checkoutPage.userSecondNameInput.sendKeys(paymentData.getSecondName());
+        checkoutPage.zipCodeInput.sendKeys(paymentData.getZipCode());
+        checkoutPage.continueButton.click();
+        return new PaymentSteps(driver);
     }
 
     public ListOfProductsPage completePayment(){
-        overviewPage.searchFinishButton().click();
-        completePage.searchBackHomeButton().click();
+        overviewPage.finishButton.click();
+        completePage.backHomeButton.click();
         return new ListOfProductsPage(driver);
     }
 }

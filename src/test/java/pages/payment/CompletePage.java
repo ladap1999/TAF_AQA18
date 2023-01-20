@@ -1,24 +1,19 @@
 package pages.payment;
 
 import baseEntities.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class CompletePage extends BasePage {
-    private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Complete!']");
-    private final By backHomeButtonLocator = By.id("back-to-products");
+    @FindBy(xpath = "//*[text() = 'Checkout: Complete!']")
+    public WebElement headerTitle;
+
+    @FindBy(id = "back-to-products")
+    public WebElement backHomeButton;
 
     public CompletePage(WebDriver driver) {
         super(driver);
     }
-
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
-    }
-
-    public WebElement searchBackHomeButton() {
-        return driver.findElement(backHomeButtonLocator);
-    }
 }
+

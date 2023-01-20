@@ -19,15 +19,15 @@ public class AddToCartSteps extends BaseStep {
         cartPage = new CartPage(driver);
     }
 
-    public SelectedProductPage addToCart() throws InterruptedException {
-        productPage.searchItem().click();
-        selectedProductPage.findAddButton().click();
+    public NavigationStep addToCart() throws InterruptedException {
+        productPage.itemToAdd.click();
+        selectedProductPage.addButton.click();
         Thread.sleep(3000);
-        return new SelectedProductPage(driver);
+        return new NavigationStep(driver);
     }
 
-    public CartPage followToCheckoutPage(){
-        cartPage.findCheckoutButton().click();
-        return new CartPage(driver);
+    public PaymentSteps followToCheckoutPage(){
+        cartPage.checkoutButton.click();
+        return new PaymentSteps(driver);
     }
 }

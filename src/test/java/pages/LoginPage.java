@@ -4,24 +4,19 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
-    private final By userNameInputLocator = By.id("user-name");
-    private final By passwordInputLocator = By.id("password");
-    private final By logInButtonLocator = By.id("login-button");
+    @FindBy(id = "user-name")
+    public WebElement userNameInput;
+
+    @FindBy(id = "password")
+    public WebElement passwordInput;
+
+    @FindBy(id = "login-button" )
+    public WebElement logInButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-
-    @Override
-    protected By getPageIdentifier() {
-        return logInButtonLocator;
-    }
-
-    public WebElement getEmailInput() { return driver.findElement(userNameInputLocator);}
-
-    public WebElement getPassword() { return driver.findElement(passwordInputLocator);}
-
-    public WebElement getLogInButton() { return driver.findElement(logInButtonLocator);}
 }

@@ -4,36 +4,22 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class InformationPage extends BasePage {
-    private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Your Information']");
-    private final By userFirstNameInputLocator = By.id("first-name");
-    private final By userSecondNameInputLocator = By.id("last-name");
-    private final By zipCodeInputLocator = By.id("postal-code");
-    private final By continueButtonLocator = By.id("continue");
+    @FindBy(id = "first-name")
+    public WebElement userFirstNameInput;
+
+    @FindBy(id = "last-name")
+    public WebElement userSecondNameInput;
+
+    @FindBy(id = "postal-code")
+    public WebElement zipCodeInput;
+
+    @FindBy(id = "continue")
+    public WebElement continueButton;
 
     public InformationPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
-    }
-
-    public WebElement getFirstNameInput() {
-        return driver.findElement(userFirstNameInputLocator);
-    }
-
-    public WebElement getSecondNameInput() {
-        return driver.findElement(userSecondNameInputLocator);
-    }
-
-    public WebElement getZipCodeInput() {
-        return driver.findElement(zipCodeInputLocator);
-    }
-
-    public WebElement getContinueButton() {
-        return driver.findElement(continueButtonLocator);
     }
 }

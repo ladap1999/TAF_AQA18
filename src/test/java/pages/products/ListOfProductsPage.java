@@ -4,21 +4,20 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ListOfProductsPage extends BasePage {
-    private final By headerTitleLabelLocator = By.className("title");
-    private final By itemToAddLocator = By.xpath("//*[text() = 'Sauce Labs Backpack']");
+    @FindBy(className = "title")
+    public WebElement headerTitleLabel;
+
+    @FindBy(xpath = "//*[text() = 'Sauce Labs Backpack']" )
+    public WebElement itemToAdd;
 
     public ListOfProductsPage(WebDriver driver) {
         super(driver);
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
-    }
-
-    public WebElement searchItem() {
-        return driver.findElement(itemToAddLocator);
+    public boolean isPageOpened() {
+        return headerTitleLabel.isDisplayed();
     }
 }

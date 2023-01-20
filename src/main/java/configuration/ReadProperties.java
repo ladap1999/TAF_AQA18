@@ -23,9 +23,22 @@ public class ReadProperties {
         return properties.getProperty("browser");
     }
 
-    public static String username() {
+    public static String userName() {
         return properties.getProperty("username");
     }
+
+    public static String firstName() {
+        return properties.getProperty("firstname");
+    }
+
+    public static String secondName() {
+        return properties.getProperty("secondname");
+    }
+
+    public static String zipCode() {
+        return properties.getProperty("zipcode");
+    }
+
 
     public static String password() {
         return properties.getProperty("password");

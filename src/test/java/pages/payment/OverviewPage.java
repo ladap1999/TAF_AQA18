@@ -4,21 +4,16 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class OverviewPage extends BasePage {
-    private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Overview']");
-    private final By finishButtonLocator = By.id("finish");
+    @FindBy(xpath = "//*[text() = 'Checkout: Overview']" )
+    public WebElement headerTitleLabel;
+
+    @FindBy(id = "finish")
+    public WebElement finishButton;
 
     public OverviewPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
-    }
-
-    public WebElement searchFinishButton() {
-        return driver.findElement(finishButtonLocator);
     }
 }

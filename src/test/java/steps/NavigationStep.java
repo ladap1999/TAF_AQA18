@@ -10,9 +10,9 @@ public class NavigationStep extends BaseStep {
         super(driver);
     }
 
-    public CartPage navigateToAddProjectPage() {
+    public AddToCartSteps navigateToAddProjectPage() {
         CartPage cartPage = new CartPage(driver);
         cartPage.openPageByUrl();
-        return cartPage;
+        return new AddToCartSteps(driver);
     }
 }
