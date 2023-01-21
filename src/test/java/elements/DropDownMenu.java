@@ -22,10 +22,10 @@ public class DropDownMenu {
         dropDownMenuUIElement = new UIElement(driver, by).findUIElement(By.className("chzn-results"));
     }
 
-    public DropDownMenu(WebDriver driver, String dropDownId) {
-        uiElement = new UIElement(driver, By.id(dropDownId));
+    public DropDownMenu(WebDriver driver, String id) {
+        uiElement = new UIElement(driver, By.id(id));
         waitsService = new WaitsService(driver);
-        dropDownUIElement = new UIElement(driver, By.id(dropDownId));
+        dropDownUIElement = new UIElement(driver, By.id(id));
         inputElement = dropDownUIElement.findUIElement(By.cssSelector("[autocomplete = 'off']"));
         dropDownMenuUIElement = dropDownUIElement.findUIElement(By.className("chzn-results"));
         uiElementTagList = new ArrayList<>();
@@ -54,11 +54,11 @@ public class DropDownMenu {
         return dropDownUIElement;
     }
 
-    public String search(String searchText) {
+    public String selectOptionUsingSearch(String searchText) {
         dropDownClick();
         inputElement.sendKeys(searchText);
-        UIElement selectedElement =
-                (UIElement) waitsService.waitsForVisibilityElement(dropDownMenuUIElement.findUIElement(By.className("active-result")));
+        UIElement selectedElement = (UIElement) waitsService.waitsForVisibilityElement(dropDownMenuUIElement
+                .findUIElement(By.className("active-result")));
         selectedElement.click();
         return selectedElement.getAttribute("innerText");
     }

@@ -21,12 +21,12 @@ public class WrappersTest extends BaseTest {
     }
 
     @Test
-    public void checkboxTest() {
+    public void checkboxTest() throws InterruptedException {
         userStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         TodoPage todoPage = navigationSteps.navigateToTodoPage();
         toDoSteps.followToFilter();
-        todoPage.getType().selectByIndex(1);
-        Assert.assertTrue(todoPage.getType().clickByText("Failed").isSelected());
+        Assert.assertTrue(todoPage.getType().setFlag("Failed").isSelected());
+        Assert.assertFalse(todoPage.getType().removeFlag("Failed").isSelected());
     }
 
     @Test
@@ -38,6 +38,6 @@ public class WrappersTest extends BaseTest {
         addTestCasePage.getType().selectByIndex(1);
         testCaseSteps.openDropDownMenu();
         Assert.assertTrue(addTestCasePage.getType().selectByText("Low").isDisplayed());
-        Assert.assertEquals(addTestCasePage.getType().search("lo"), "Low");
+        Assert.assertEquals(addTestCasePage.getType().selectOptionUsingSearch("lo"), "Low");
     }
 }
