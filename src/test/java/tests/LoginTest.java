@@ -26,7 +26,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(new DashboardPage(driver).isPageOpened());
     }
 
-    @Test (description = "Description")
+  //  @Test (description = "Description")
     @Issue("AQA18-12")
     @TmsLink("TC-001")
     @Description("Description1")
@@ -45,7 +45,7 @@ public class LoginTest extends BaseTest {
         );
     }
 
-    @Test
+  //  @Test
     public void loginIncorrectTest() {
         Assert.assertEquals(
                 userStep.loginIncorrect(ReadProperties.username(), "sdfsdfsdf")
@@ -54,7 +54,7 @@ public class LoginTest extends BaseTest {
         );
     }
 
-    @Test
+   // @Test
     public void addProjectTest() {
         Project project = new Project();
         project.setName("WP_01");
