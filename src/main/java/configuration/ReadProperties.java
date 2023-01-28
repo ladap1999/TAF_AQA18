@@ -1,10 +1,14 @@
 package configuration;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.util.Properties;
 
 public class ReadProperties {
     private static final Properties properties;
+    private  static Logger logger = LogManager.getLogger(ReadProperties.class);
 
     static {
         properties = new Properties();
@@ -12,6 +16,8 @@ public class ReadProperties {
             properties.load(ReadProperties.class.getClassLoader().getResourceAsStream("config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
+
         }
     }
 

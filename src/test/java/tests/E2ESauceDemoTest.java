@@ -14,10 +14,10 @@ public class E2ESauceDemoTest extends BaseTest {
     public void e2eSuccessfulTest() throws InterruptedException {
         User user = new User(ReadProperties.userName(),ReadProperties.password());
 
-        PaymentData paymentData = new PaymentData.Builder()
-                .withFirstName(ReadProperties.firstName())
-                .withSecondName(ReadProperties.secondName())
-                .withZipCode(ReadProperties.zipCode())
+        PaymentData paymentData = PaymentData.builder()
+                .firstName(ReadProperties.firstName())
+                .secondName(ReadProperties.secondName())
+                .zipCode(ReadProperties.zipCode())
                 .build();
 
         ListOfProductsPage listOfProductsPage = userStep
