@@ -1,55 +1,32 @@
 package baseEntities;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import configuration.ReadProperties;
-import factory.BrowserFactory;
-import io.qameta.allure.Attachment;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import services.WaitsService;
-import steps.ProjectSteps;
-import steps.UserStep;
+import org.testng.annotations.BeforeSuite;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 
 public class BaseTest {
-    protected WebDriver driver;
-    protected UserStep userStep;
-    protected ProjectSteps projectSteps;
 
-    protected WaitsService waitsService;
+    @BeforeSuite
+    public void setUp() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-    @BeforeMethod
-    public void setUp(ITestContext iTestContext) {
-        driver = new BrowserFactory().getDriver();
-        driver.get(ReadProperties.getUrl());
-
-        iTestContext.setAttribute("driver", driver);
-
-        userStep = new UserStep(driver);
-        projectSteps = new ProjectSteps(driver);
+        Configuration.browser = ReadProperties.browserName();
+        Configuration.baseUrl = ReadProperties.getUrl();
+        Configuration.timeout = 15000;
+        Configuration.fastSetValue = true;
+        //Configuration.assertionMode = AssertionMode.SOFT;
+        //Configuration.headless = true;
+        //Configuration.reportsFolder = "target/";
     }
 
     @AfterMethod
-    public void tearDown(ITestResult testResult) {
-        // Solution - 2: Плохое решение - потому, что Screenshot добавляется в шаг TearDown
-        /*
-        if (testResult.getStatus() == ITestResult.FAILURE) {
-            try {
-                byte[] srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                saveScreenshot(srcFile);
-            } catch (NoSuchSessionException ex) {
-
-            }
-        }
-        */
-        driver.quit();
+    public void tearDown() {
+        closeWebDriver();
     }
-
-    // Solution - 2:
-    @Attachment(value = "Page screenshot", type = "image/png")
-    private byte[] saveScreenshot(byte[] screenshot) {
-        return screenshot;
-    }
-    // Solution - 2: Finish
 }
