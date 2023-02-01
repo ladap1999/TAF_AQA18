@@ -1,22 +1,18 @@
 package pages;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage {
-    @FindBy(id = "user-name")
-    public WebElement userNameInput;
+import static com.codeborne.selenide.Selenide.$;
 
-    @FindBy(id = "password")
-    public WebElement passwordInput;
+public class LoginPage{
+    private final By userNameInputLocator = By.id("user-name");
+    private final By passwordInputLocator = By.id("password");
+    private final By logInButtonLocator = By.id("login-button");
 
-    @FindBy(id = "login-button" )
-    public WebElement logInButton;
+    public SelenideElement getEmailInput() { return $(userNameInputLocator);}
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
+    public SelenideElement getPassword() { return $(passwordInputLocator);}
+
+    public SelenideElement getLogInButton() { return $(logInButtonLocator);}
 }

@@ -1,25 +1,16 @@
 package pages;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class CartPage extends BasePage{
+import static com.codeborne.selenide.Selenide.$;
+
+public class CartPage{
     private final static String pagePath = "/cart.html";
+    private final By headerTitleLabelLocator = By.className("title");
+    private final By checkoutButtonLocator = By.id("checkout");
 
-    @FindBy(className = "title")
-    public WebElement headerTitleLabel;
-
-    @FindBy(id = "checkout" )
-    public WebElement checkoutButton;
-
-    public CartPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public void openPageByUrl() {
-        super.openPageByUrl(pagePath);
+    public SelenideElement findCheckoutButton(){
+        return $(checkoutButtonLocator);
     }
 }

@@ -1,32 +1,33 @@
 package baseEntities;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import configuration.ReadProperties;
-import factory.BrowserFactory;
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import steps.*;
+import org.testng.annotations.BeforeSuite;
+import steps.UserSteps;
+
+import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
 public class BaseTest {
-    protected WebDriver driver;
     protected UserSteps userStep;
-    protected AddToCartSteps addToCartSteps;
-    protected PaymentSteps paymentSteps;
-    protected NavigationStep navigationSteps;
+        @BeforeSuite
+        public void setUp() {
+            userStep = new UserSteps();
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-    @BeforeMethod
-    public void setUp() {
-        driver = new BrowserFactory().getDriver();
-        driver.get(ReadProperties.getUrl());
+            Configuration.browser = ReadProperties.browserName();
+            Configuration.baseUrl = ReadProperties.getUrl();
+            Configuration.timeout = 15000;
+           // Configuration.fastSetValue = true;
+            //Configuration.assertionMode = AssertionMode.SOFT;
+            //Configuration.headless = true;
+            //Configuration.reportsFolder = "target/";
+        }
 
-        userStep = new UserSteps(driver);
-        addToCartSteps = new AddToCartSteps(driver);
-        paymentSteps = new PaymentSteps(driver);
-        navigationSteps = new NavigationStep(driver);
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
+        @AfterMethod
+        public void tearDown() {
+            closeWebDriver();
+        }
 }

@@ -1,23 +1,23 @@
 package pages.products;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class ListOfProductsPage extends BasePage {
-    @FindBy(className = "title")
-    public WebElement headerTitleLabel;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Selenide.$;
 
-    @FindBy(xpath = "//*[text() = 'Sauce Labs Backpack']" )
-    public WebElement itemToAdd;
+public class ListOfProductsPage{
+    private final By headerTitleLabelLocator = By.className("title");
+    private final By itemToAddLocator = By.xpath("//*[text() = 'Sauce Labs Backpack']");
 
-    public ListOfProductsPage(WebDriver driver) {
-        super(driver);
+    public SelenideElement isPageOpened() {
+        return $(headerTitleLabelLocator).should(exist);
     }
 
-    public boolean isPageOpened() {
-        return headerTitleLabel.isDisplayed();
+    public SelenideElement searchItem() {
+        return $(itemToAddLocator);
+    }
+    public SelenideElement displyedTitleLocator() {
+        return $(headerTitleLabelLocator);
     }
 }

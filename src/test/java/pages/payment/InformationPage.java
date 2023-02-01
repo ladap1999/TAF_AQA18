@@ -1,25 +1,30 @@
 package pages.payment;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class InformationPage extends BasePage {
-    @FindBy(id = "first-name")
-    public WebElement userFirstNameInput;
+import static com.codeborne.selenide.Selenide.$;
 
-    @FindBy(id = "last-name")
-    public WebElement userSecondNameInput;
+public class InformationPage{
+    private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Your Information']");
+    private final By userFirstNameInputLocator = By.id("first-name");
+    private final By userSecondNameInputLocator = By.id("last-name");
+    private final By zipCodeInputLocator = By.id("postal-code");
+    private final By continueButtonLocator = By.id("continue");
 
-    @FindBy(id = "postal-code")
-    public WebElement zipCodeInput;
+    public SelenideElement getFirstNameInput() {
+        return $(userFirstNameInputLocator);
+    }
 
-    @FindBy(id = "continue")
-    public WebElement continueButton;
+    public SelenideElement getSecondNameInput() {
+        return $(userSecondNameInputLocator);
+    }
 
-    public InformationPage(WebDriver driver) {
-        super(driver);
+    public SelenideElement getZipCodeInput() {
+        return $(zipCodeInputLocator);
+    }
+
+    public SelenideElement getContinueButton() {
+        return $(continueButtonLocator);
     }
 }

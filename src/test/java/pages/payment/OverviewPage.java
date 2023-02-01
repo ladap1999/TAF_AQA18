@@ -1,19 +1,14 @@
 package pages.payment;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class OverviewPage extends BasePage {
-    @FindBy(xpath = "//*[text() = 'Checkout: Overview']" )
-    public WebElement headerTitleLabel;
+import static com.codeborne.selenide.Selenide.$;
 
-    @FindBy(id = "finish")
-    public WebElement finishButton;
-
-    public OverviewPage(WebDriver driver) {
-        super(driver);
+public class OverviewPage{
+   // private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Overview']");
+    private final By finishButtonLocator = By.id("finish");
+    public SelenideElement searchFinishButton() {
+        return $(finishButtonLocator);
     }
 }

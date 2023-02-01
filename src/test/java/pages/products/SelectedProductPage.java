@@ -1,18 +1,21 @@
 package pages.products;
 
-import baseEntities.BasePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class SelectedProductPage extends BasePage {
-    @FindBy(id = "add-to-cart-sauce-labs-backpack")
-    public WebElement addButton;
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
-    @FindBy(id = "back-to-products")
-    public WebElement backToProductsButton;
+import static com.codeborne.selenide.Selenide.$;
 
-    public SelectedProductPage(WebDriver driver) {
-        super(driver);
+public class SelectedProductPage {
+    private final By addButtonLocator = By.id("add-to-cart-sauce-labs-backpack");
+    private final By backToProductsButtonLocator = By.id("back-to-products");
+    private final By cartButtonLocator = By.className("shopping_cart_link");
+
+
+    public SelenideElement findAddButton() {
+        return $(addButtonLocator);
+    }
+    public SelenideElement findCartButton() {
+        return $(cartButtonLocator);
     }
 }

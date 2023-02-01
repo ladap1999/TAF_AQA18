@@ -1,38 +1,38 @@
 package steps;
 
-import baseEntities.BaseStep;
+import com.codeborne.selenide.Condition;
 import models.PaymentData;
-import org.openqa.selenium.WebDriver;
 import pages.payment.CompletePage;
 import pages.payment.InformationPage;
 import pages.payment.OverviewPage;
 import pages.products.ListOfProductsPage;
 
-public class PaymentSteps extends BaseStep {
+import static com.codeborne.selenide.Condition.exist;
+
+public class PaymentSteps{
     private InformationPage checkoutPage;
 
     private OverviewPage overviewPage;
 
     private CompletePage completePage;
 
-    public PaymentSteps(WebDriver driver) {
-        super(driver);
-        checkoutPage = new InformationPage(driver);
-        overviewPage = new OverviewPage(driver);
-        completePage = new CompletePage(driver);
+    public PaymentSteps() {
+        checkoutPage = new InformationPage();
+        overviewPage = new OverviewPage();
+        completePage = new CompletePage();
     }
 
     public PaymentSteps fillInformationFields(PaymentData paymentData){
-        checkoutPage.userFirstNameInput.sendKeys(paymentData.getFirstName());
-        checkoutPage.userSecondNameInput.sendKeys(paymentData.getSecondName());
-        checkoutPage.zipCodeInput.sendKeys(paymentData.getZipCode());
-        checkoutPage.continueButton.click();
-        return new PaymentSteps(driver);
+        checkoutPage.getFirstNameInput().shouldBe(exist).setValue(paymentData.getFirstName());
+        checkoutPage.getSecondNameInput().shouldBe(exist).setValue(paymentData.getSecondName());
+        checkoutPage.getZipCodeInput().shouldBe(exist).setValue(paymentData.getZipCode());
+        checkoutPage.getContinueButton().shouldBe(exist).click();
+        return new PaymentSteps();
     }
 
     public ListOfProductsPage completePayment(){
-        overviewPage.finishButton.click();
-        completePage.backHomeButton.click();
-        return new ListOfProductsPage(driver);
+        overviewPage.searchFinishButton().shouldBe(exist).click();
+        completePage.searchBackHomeButton().shouldBe(exist).click();
+        return new ListOfProductsPage();
     }
 }

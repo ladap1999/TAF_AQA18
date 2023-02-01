@@ -1,18 +1,22 @@
 
 package steps;
 
-import baseEntities.BaseStep;
-import org.openqa.selenium.WebDriver;
+import com.codeborne.selenide.Condition;
 import pages.CartPage;
+import pages.products.SelectedProductPage;
 
-public class NavigationStep extends BaseStep {
-    public NavigationStep(WebDriver driver) {
-        super(driver);
+import static com.codeborne.selenide.Condition.exist;
+
+public class NavigationStep {
+    SelectedProductPage selectedProductPage;
+
+    public NavigationStep() {
+        selectedProductPage = new SelectedProductPage();
     }
 
     public AddToCartSteps navigateToAddProjectPage() {
-        CartPage cartPage = new CartPage(driver);
-        cartPage.openPageByUrl();
-        return new AddToCartSteps(driver);
+        selectedProductPage.findCartButton().should(exist).click();
+
+        return new AddToCartSteps();
     }
 }
