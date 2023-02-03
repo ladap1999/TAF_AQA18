@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
 import models.PaymentData;
 import pages.payment.CompletePage;
 import pages.payment.InformationPage;
@@ -9,7 +8,7 @@ import pages.products.ListOfProductsPage;
 
 import static com.codeborne.selenide.Condition.exist;
 
-public class PaymentSteps{
+public class PaymentSteps {
     private InformationPage checkoutPage;
 
     private OverviewPage overviewPage;
@@ -22,7 +21,7 @@ public class PaymentSteps{
         completePage = new CompletePage();
     }
 
-    public PaymentSteps fillInformationFields(PaymentData paymentData){
+    public PaymentSteps fillInformationFields(PaymentData paymentData) {
         checkoutPage.getFirstNameInput().shouldBe(exist).setValue(paymentData.getFirstName());
         checkoutPage.getSecondNameInput().shouldBe(exist).setValue(paymentData.getSecondName());
         checkoutPage.getZipCodeInput().shouldBe(exist).setValue(paymentData.getZipCode());
@@ -30,7 +29,7 @@ public class PaymentSteps{
         return new PaymentSteps();
     }
 
-    public ListOfProductsPage completePayment(){
+    public ListOfProductsPage completePayment() {
         overviewPage.searchFinishButton().shouldBe(exist).click();
         completePage.searchBackHomeButton().shouldBe(exist).click();
         return new ListOfProductsPage();

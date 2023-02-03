@@ -5,8 +5,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class InformationPage{
-    private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Your Information']");
+public class InformationPage {
     private final By userFirstNameInputLocator = By.id("first-name");
     private final By userSecondNameInputLocator = By.id("last-name");
     private final By zipCodeInputLocator = By.id("postal-code");

@@ -1,13 +1,12 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
 import models.User;
 import pages.LoginPage;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.exist;
 
-public class UserSteps{
+public class UserSteps {
     private LoginPage loginPage;
 
 
@@ -23,7 +22,6 @@ public class UserSteps{
 
     public AddToCartSteps loginSuccessful(User user) {
         login(user.getUserName(), user.getUserPassword());
-
         return new AddToCartSteps();
     }
 }

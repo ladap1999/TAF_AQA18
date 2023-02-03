@@ -7,7 +7,7 @@ import pages.products.SelectedProductPage;
 
 import static com.codeborne.selenide.Condition.exist;
 
-public class AddToCartSteps{
+public class AddToCartSteps {
     private ListOfProductsPage productPage;
     private SelectedProductPage selectedProductPage;
 
@@ -26,7 +26,7 @@ public class AddToCartSteps{
         return new NavigationStep();
     }
 
-    public PaymentSteps followToCheckoutPage(){
+    public PaymentSteps followToCheckoutPage() {
         cartPage.findCheckoutButton().shouldBe(exist).click();
         return new PaymentSteps();
     }

@@ -7,12 +7,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class CompletePage{
-    private final By headerTitleLabelLocator = By.xpath("//*[text() = 'Checkout: Complete!']");
     private final By backHomeButtonLocator = By.id("back-to-products");
 
     public SelenideElement searchBackHomeButton() {
         return $(backHomeButtonLocator);
     }
-
 }
 

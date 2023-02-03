@@ -5,29 +5,29 @@ public class PaymentData {
     private String secondName;
     private String zipCode;
 
-    public static class Builder{
+    public static class Builder {
         private PaymentData paymentData;
 
         public Builder() {
             paymentData = new PaymentData();
         }
 
-        public Builder withFirstName(String firstName){
+        public Builder withFirstName(String firstName) {
             paymentData.firstName = firstName;
             return this;
         }
 
-        public Builder withSecondName(String secondName){
+        public Builder withSecondName(String secondName) {
             paymentData.secondName = secondName;
             return this;
         }
 
-        public Builder withZipCode(String zipCode){
+        public Builder withZipCode(String zipCode) {
             paymentData.zipCode = zipCode;
             return this;
         }
 
-        public PaymentData build(){
+        public PaymentData build() {
             return paymentData;
         }
     }

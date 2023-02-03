@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import steps.UserSteps;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
 public class BaseTest {
@@ -20,10 +21,7 @@ public class BaseTest {
             Configuration.browser = ReadProperties.browserName();
             Configuration.baseUrl = ReadProperties.getUrl();
             Configuration.timeout = 15000;
-           // Configuration.fastSetValue = true;
-            //Configuration.assertionMode = AssertionMode.SOFT;
-            //Configuration.headless = true;
-            //Configuration.reportsFolder = "target/";
+            open(" ");
         }
 
         @AfterMethod

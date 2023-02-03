@@ -5,12 +5,10 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CartPage{
-    private final static String pagePath = "/cart.html";
-    private final By headerTitleLabelLocator = By.className("title");
+public class CartPage {
     private final By checkoutButtonLocator = By.id("checkout");
 
-    public SelenideElement findCheckoutButton(){
+    public SelenideElement findCheckoutButton() {
         return $(checkoutButtonLocator);
     }
 }
