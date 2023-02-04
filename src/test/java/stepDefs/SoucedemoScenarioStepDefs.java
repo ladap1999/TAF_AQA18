@@ -20,7 +20,7 @@ import services.WaitsService;
 import static baseEntities.BaseCucumberTest.driver;
 
 
-public class FirstStepDefs {
+public class SoucedemoScenarioStepDefs {
     private LoginPage loginPage;
     private ListOfProductsPage productPage;
     private SelectedProductPage selectedProductPage;
@@ -33,7 +33,7 @@ public class FirstStepDefs {
     private WaitsService waitsService;
 
 
-    public FirstStepDefs(BaseCucumberTest baseCucumberTest) {
+    public SoucedemoScenarioStepDefs(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
     }
 
