@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class InformationPage extends BasePage {
+public class CheckoutPage extends BasePage {
     @FindBy(id = "first-name")
     public WebElement userFirstNameInput;
 
@@ -20,10 +20,10 @@ public class InformationPage extends BasePage {
     @FindBy(id = "continue")
     public WebElement continueButton;
 
-    private Logger logger = LogManager.getLogger(InformationPage.class);
+    private Logger logger = LogManager.getLogger(CheckoutPage.class);
 
-    public InformationPage(WebDriver driver) {
+    public CheckoutPage(WebDriver driver) {
         super(driver);
-        logger.info("PageFactory pattern is implemented in InformationPage");
+        logger.info("PageFactory pattern is implemented in CheckoutPage");
     }
 }

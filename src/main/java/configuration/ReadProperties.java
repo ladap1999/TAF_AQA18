@@ -23,7 +23,9 @@ public class ReadProperties {
     public static String getUrl() {
         return properties.getProperty("url");
     }
-
+    public static long getTimeout() {
+        return Long.parseLong(properties.getProperty("timeout"));
+    }
     public static String browserName() {
         return properties.getProperty("browser");
     }
