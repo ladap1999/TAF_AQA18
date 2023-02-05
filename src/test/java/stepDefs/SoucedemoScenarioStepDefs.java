@@ -52,7 +52,7 @@ public class SoucedemoScenarioStepDefs {
         driver.get(ReadProperties.getUrl());
     }
 
-    @When("user {string} with password {string} logged in")
+    @Given("user {string} with password {string} logged in")
     public void userWithPasswordLoggedIn(String userName, String password) {
         loginPage = new LoginPage(driver);
         loginPage.userNameInput.sendKeys(userName);
