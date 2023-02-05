@@ -47,7 +47,7 @@ public class SoucedemoScenarioStepDefs {
         driver.quit();
     }
 
-    @When("loginPage is opened")
+    @Given("loginPage is opened")
     public void openLoginPage() {
         driver.get(ReadProperties.getUrl());
     }
