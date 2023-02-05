@@ -29,28 +29,6 @@ public class ReadProperties {
     public static String browserName() {
         return properties.getProperty("browser");
     }
-
-    public static String userName() {
-        return properties.getProperty("username");
-    }
-
-    public static String firstName() {
-        return properties.getProperty("firstname");
-    }
-
-    public static String secondName() {
-        return properties.getProperty("secondname");
-    }
-
-    public static String zipCode() {
-        return properties.getProperty("zipcode");
-    }
-
-
-    public static String password() {
-        return properties.getProperty("password");
-    }
-
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
