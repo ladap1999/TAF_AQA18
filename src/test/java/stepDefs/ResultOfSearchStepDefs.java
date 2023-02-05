@@ -13,9 +13,7 @@ import static baseEntities.BaseCucumberTest.driver;
 public class ResultOfSearchStepDefs {
     private BaseCucumberTest baseCucumberTest;
     private SearchResultPage searchResultPage;
-
     private SelectedHotelPage selectedHotelPage;
-
     private WaitsService waitsService;
 
     public ResultOfSearchStepDefs(BaseCucumberTest baseCucumberTest) {
@@ -30,7 +28,7 @@ public class ResultOfSearchStepDefs {
                 countHotel++;
             }
         }
-        Assert.assertEquals(countHotel,1,"Search result didn't find required hotel,");
+        Assert.assertEquals(countHotel,1,"Search result didn't find required hotel");
     }
 
     @Then("hotel Victoria Regent Waterfront Hotel & Suites  has rating {string}")
@@ -40,7 +38,6 @@ public class ResultOfSearchStepDefs {
         searchResultPage.linkToHotel.click();
 
         selectedHotelPage = new SelectedHotelPage(driver);
-        Thread.sleep(5000);
 
         Assert.assertEquals(waitsService.waitsForVisibilityElement(selectedHotelPage.hotelRating)
                 .getText(),rating,"Search result didn't find required rating");

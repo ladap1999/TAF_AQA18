@@ -9,12 +9,10 @@ import services.WaitsService;
 
 import static baseEntities.BaseCucumberTest.driver;
 
-
 public class SearchHotelStepDefs {
     private BaseCucumberTest baseCucumberTest;
     private WaitsService waitsService;
     private SearchHotelPage searchHotelPage;
-
 
     public SearchHotelStepDefs(BaseCucumberTest baseCucumberTest) {
         this.baseCucumberTest = baseCucumberTest;
