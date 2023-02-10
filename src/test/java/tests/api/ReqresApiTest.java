@@ -14,33 +14,33 @@ public class ReqresApiTest {
 
     @Test
     public void simpleStepByStepApiTest() {
-        //Setup RestAssured
+        // Setup RestAssured
         RestAssured.baseURI = "https://reqres.in/";
 
-        //Setup endpoint
+        // Setup endpoint
         int userID = 2;
         String endpoint = "/api/users/" + userID;
 
-        //Setup request Object
+        // Setup Request Object
         RequestSpecification httpRequest = given();
 
-        //Setup Response Object
+        // Setup Response Object
         Response response = httpRequest.request(Method.GET, endpoint);
 
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 200);
         Assert.assertEquals(statusCode, HttpStatus.SC_OK);
 
-        //Get Response Body
+        // Get Response Body
         System.out.println(response.getBody().asPrettyString());
     }
 
     @Test
     public void simpleShortApiTest() {
-        //Setup RestAssured
+        // Setup RestAssured
         RestAssured.baseURI = "https://reqres.in/";
 
-        //Setup endpoint
+        // Setup endpoint
         int userID = 2;
         String endpoint = "/api/users/" + userID;
 
@@ -48,7 +48,7 @@ public class ReqresApiTest {
                 .when()
                 .get(endpoint)
                 .then()
-                .statusCode(HttpStatus.SC_OK) //это и есть assert
+                .statusCode(HttpStatus.SC_OK)
                 .log().body();
     }
 }
