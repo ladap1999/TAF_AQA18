@@ -1,0 +1,263 @@
+{
+  "info": {
+    "_postman_id": "4e42601c-fc98-483c-9f9b-9b450190aa1a",
+    "name": "TestRail_API_Petkevich",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Milestones",
+      "item": [
+        {
+          "name": "Get_Milestones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}} index.php?/api/v2/get_milestones/{{project_id}}",
+              "host": [
+                "{{base_url}} index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/get_milestones/{{project_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add_milestone",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Milestone_AQA_18\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}index.php?/api/v2/add_milestone/{{project_id}}",
+              "host": [
+                "{{base_url}}index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/add_milestone/{{project_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update_milestone",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Milistone_AQA18onl\",\r\n    \"description\": \"for test obly\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}index.php?/api/v2/update_milestone/{{milestone_id}}",
+              "host": [
+                "{{base_url}}index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/update_milestone/{{milestone_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete_milestone",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}index.php?/api/v2/delete_milestone/{{milestone_id}}",
+              "host": [
+                "{{base_url}}index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/delete_milestone/{{milestone_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cases",
+      "item": [
+        {
+          "name": "Get_cases",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Update_case",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"priority_id\": 1,\r\n    \"title\": \"UpdateHere\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}index.php?/api/v2/update_case/{{testCase_id}}",
+              "host": [
+                "{{base_url}}index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/update_case/{{testCase_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Move_case_to_section",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"case_ids\": [3, 4]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}index.php?/api/v2/move_cases_to_section/{{section_id}}",
+              "host": [
+                "{{base_url}}index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/move_cases_to_section/{{section_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete_case",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}index.php?/api/v2/delete_case/{{testCase_id}}",
+              "host": [
+                "{{base_url}}index",
+                "php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/delete_case/{{testCase_id}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "{{psw}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{login}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
