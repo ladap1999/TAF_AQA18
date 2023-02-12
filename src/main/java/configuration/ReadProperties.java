@@ -18,6 +18,16 @@ public class ReadProperties {
     public static String getUrl() {
         return properties.getProperty("url");
     }
+    public static int getProjectId() {
+        return Integer.parseInt(properties.getProperty("projectId"));
+    }
+
+    public static int getSelectId() {
+        return Integer.parseInt(properties.getProperty("sectionId"));
+    }
+    public static int getMoveToSelectId() {
+        return Integer.parseInt(properties.getProperty("moveToSectionId"));
+    }
 
     public static String browserName() {
         return properties.getProperty("browser");

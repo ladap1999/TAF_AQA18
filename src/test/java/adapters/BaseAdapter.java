@@ -7,11 +7,13 @@ import org.testng.annotations.BeforeTest;
 public class BaseAdapter {
     protected Gson gson;
 
-    public void setupApi() {
-        gson = new Gson();
-        gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .create();
-
+    public Gson getGson() {
+        if (gson == null) {
+            gson = new Gson();
+            gson = new GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
+                    .create();
+        }
+        return gson;
     }
 }
