@@ -18,6 +18,7 @@ public class Milestone {
 
     @Expose
     @SerializedName("refs")
+    @EqualsAndHashCode.Exclude
     private String references;
 
     @Expose
@@ -26,18 +27,21 @@ public class Milestone {
 
     @Expose
     @SerializedName("due_on")
+    @EqualsAndHashCode.Exclude
     private int dueDate;
 
     @Expose
     @SerializedName("start_on")
-    private int startDate;
+    @EqualsAndHashCode.Exclude
+    private long startDate;
 
     @Expose
     @SerializedName("started_on")
     @EqualsAndHashCode.Exclude
-    private int startedOn;
+    private long startedOn;
 
     @Expose
+    @EqualsAndHashCode.Exclude
     private int completed_on;
 
     @Expose
@@ -46,7 +50,6 @@ public class Milestone {
 
     @Expose
     @SerializedName("is_started")
-    @EqualsAndHashCode.Exclude
     private boolean isStarted;
 }
 

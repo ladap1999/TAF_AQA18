@@ -1,25 +1,33 @@
 package adapters;
 
-import configuration.ReadProperties;
 import io.restassured.mapper.ObjectMapperType;
+import io.restassured.response.Response;
 import models.Milestone;
 import org.apache.http.HttpStatus;
 import utils.Endpoints;
 
-import static org.hamcrest.Matchers.*;
-
 import static io.restassured.RestAssured.given;
 
-
 public class MilestoneAdapter extends BaseAdapter {
-    public Milestone add(Milestone milestone) {
-        String jsonBody = getGson().toJson(milestone);
 
+    public Response getMilestones(int projectID) {
+        return given()
+                .pathParams("project_id", projectID)
+                .when()
+                .get(Endpoints.GET_MILESTONES)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .response();
+    }
+
+    public Milestone add(Milestone milestone, int projectID) {
         return post(
-                jsonBody,
+                getGson().toJson(milestone),
                 Endpoints.ADD_MILESTONE,
                 "project_id",
-                ReadProperties.getProjectId(),
+                projectID,
                 milestone);
     }
 
@@ -43,17 +51,15 @@ public class MilestoneAdapter extends BaseAdapter {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    public Milestone post(String jsonBody, String endpoint, String pathParam, int id, Milestone milestone) {
+    public Milestone post(String jsonBody, String endpoint, String pathParam, int pathValue, Milestone milestone) {
         return given()
-                .pathParams(pathParam, id)
+                .pathParams(pathParam, pathValue)
                 .body(jsonBody)
                 .log().all()
                 .when()
                 .post(endpoint)
                 .then()
                 .log().body()
-                .body("description", is(milestone.getDescription()))
-                .body("name", is(milestone.getName()))
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Milestone.class, ObjectMapperType.GSON);

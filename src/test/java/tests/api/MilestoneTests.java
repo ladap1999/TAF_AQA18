@@ -1,60 +1,75 @@
 package tests.api;
 
-import baseEntities.BaseApiGsonTest;
-import configuration.ReadProperties;
+import baseEntities.BaseApiTest;
 import io.restassured.response.Response;
 import models.Milestone;
 import models.MilestonesResponse;
-import org.apache.http.HttpStatus;
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import utils.Endpoints;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
-import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
-public class MilestoneTests extends BaseApiGsonTest {
+public class MilestoneTests extends BaseApiTest {
     private Milestone actualMilestone;
+
 
     @Test
     public void getMilestones() {
-        Milestone expectedMilestone = Milestone.builder()
-                .id(15)
-                .name("ForGetting")
-                .build();
-        Response response = given()
-                .pathParams("project_id", ReadProperties.getProjectId())
-                .when()
-                .get(Endpoints.GET_MILESTONES)
-                .then()
-                .log().body()
-                .statusCode(HttpStatus.SC_OK)
-                .extract()
-                .response();
+        Response response = milestoneAdapter.getMilestones(projectID);
 
         MilestonesResponse actualMilestoneResponse = gson.fromJson(response.getBody().asPrettyString(),
                 MilestonesResponse.class);
+
+        Assert.assertTrue(actualMilestoneResponse.getMilestones() != null);
+
         for (Milestone element : actualMilestoneResponse.getMilestones()) {
-            if (element.getId() == expectedMilestone.getId()) {
-                assertThat(element, equalTo(expectedMilestone));
+            if (element.getDescription().equals(expectedMilestone.getDescription())) {
+                assertThat(element, equalTo(expectedMilestoneFromDb));
             }
         }
     }
 
     @Test
     public void addMilestone() {
-        actualMilestone = milestoneAdapter.add(expectedMilestone);
+        actualMilestone = milestoneAdapter.add(expectedMilestoneFromDb, projectID);
+        assertThat(actualMilestone.getName(), equalTo(expectedMilestoneFromDb.getName()));
     }
 
     @Test(dependsOnMethods = "addMilestone")
-    public void updateMilestone() {
-        actualMilestone.setDescription("Update_description");
-        milestoneAdapter.update(actualMilestone);
+    public void updateMilestone() throws SQLException {
+        ZonedDateTime startOfToday = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
+        long todayMillis = startOfToday.toEpochSecond() * 1000;
+
+        String updatedName = "Update_milestone";
+        milestoneTable.updateMilestoneName(expectedMilestone, updatedName);
+        ResultSet resultSet = milestoneTable.getMilestoneByName(updatedName);
+        resultSet.next();
+        actualMilestone.setName(updatedName);
+        actualMilestone.setStartDate(todayMillis);
+        actualMilestone.setStartedOn(todayMillis);
+
+
+        Assert.assertEquals(
+                milestoneAdapter.update(actualMilestone).getName(),
+                resultSet.getString("name"));
     }
 
     @Test(dependsOnMethods = "updateMilestone")
-    public void deleteMilestone() {
+    public void deleteMilestone() throws SQLException {
         milestoneAdapter.delete(actualMilestone);
+
+        milestoneTable.deleteMilestone("For_RestAPI");
+        ResultSet resultSet = milestoneTable.getMilestoneByName("Update_milestone");
+
+        Assert.assertFalse(resultSet.isBeforeFirst());
     }
 }
